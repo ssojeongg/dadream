@@ -1,0 +1,59 @@
+.Info {
+  width: 100%;
+  padding-top: 60px;
+}
+.Info > .inner {
+  height: 170px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 40px;
+}
+.Info > .inner > .info_site {
+  max-width: 185px;
+  position: relative;
+  padding-right: 20px;
+}
+.Info > .inner > .info_site > .info_logo {
+  padding-bottom: 18px;
+}
+.Info > .inner > .info_site > .info_logo::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #ebebeb;
+
+}
+.Info > .inner > .info_site > .info_logo > img {
+  width: 80px;
+  height: 80px;
+}
+.Info > .inner > .info_site > .info_detail {
+
+}
+.Info > .inner > .info_site > .info_detail > .bold {
+  font-weight: bold;
+  font-size: 15px;
+}
+.Info > .inner > .info_site > .info_detail > .description {
+  color: #999999;
+  padding-top: 4px;
+}
+.Info > .inner > .info_intro {
+
+}
+.Info > .inner > .info_intro > .info_title {
+  color: var(--color-blue);
+  font-weight: bold;
+  padding-bottom: 8px;
+  font-size: 15px;
+  letter-spacing: -.8px;
+}
+.Info > .inner > .info_intro > .info_txt {
+  font-size: 18px;
+  line-height: 1.89;
+  letter-spacing: -.6px;
+}
