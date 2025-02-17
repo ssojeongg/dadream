@@ -8,45 +8,33 @@ const Header = () => {
   const location = useLocation();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [selectedMenu, setSelectedMenu] = useState(null);
-  const [isScrolled, setIsScrolled] = useState(false); // ✅ 스크롤 상태 추가
+  const [selectedMenu, setSelectedMenu] = useState(null); // ✅ 현재 선택된 메뉴 상태 추가
 
-  // ✅ 스크롤 감지하여 색상 변경 상태 저장
   useEffect(() => {
     const updateScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      setScrollPosition(scrollY);
-      setIsScrolled(scrollY > 100); // ✅ 스크롤이 100px 이상이면 색상 유지
+      setScrollPosition(window.scrollY || document.documentElement.scrollTop);
     };
-
     window.addEventListener('scroll', updateScroll);
     return () => window.removeEventListener('scroll', updateScroll);
   }, []);
-
-  // ✅ Subpage 이동 시에도 isScrolled 유지
-  useEffect(() => {
-    if (location.pathname.includes('/sub/')) {
-      setIsScrolled(true); // ✅ Subpage로 이동하면 스크롤된 상태 유지
-    }
-  }, [location]);
 
   // ✅ 주메뉴 클릭 시 첫 번째 서브페이지로 이동 & 해당 메뉴 활성화
   const handleMenuClick = (menuId) => {
     const selectedMenu = menus.find((m) => m.id === menuId);
 
     if (selectedMenu) {
-      setSelectedMenu(menuId);
+      setSelectedMenu(menuId); // 선택된 메뉴 유지
       if (selectedMenu.subMenu.length > 0) {
-        navigate(`/sub/${menuId}/0`);
+        navigate(`/sub/${menuId}/0`); // 첫 번째 서브페이지로 이동
       } else {
         navigate(`/sub/${menuId}`);
       }
     }
   };
 
-  // ✅ 서브메뉴 클릭 시 이동
+  // ✅ 서브메뉴 클릭 시 해당 페이지로 이동 & 메뉴 유지
   const handleSubMenuClick = (menuId, subIndex) => {
-    setSelectedMenu(menuId);
+    setSelectedMenu(menuId); // 선택된 메뉴 유지
     navigate(`/sub/${menuId}/${subIndex}`);
   };
 
@@ -58,10 +46,11 @@ const Header = () => {
     setIsSidebarOpen(false);
   };
 
+  // ✅ 현재 경로가 변경될 때 선택된 메뉴 유지
   useEffect(() => {
     const pathParts = location.pathname.split("/");
     if (pathParts[1] === "sub" && pathParts[2]) {
-      setSelectedMenu(parseInt(pathParts[2], 10));
+      setSelectedMenu(parseInt(pathParts[2], 10)); // 현재 URL에서 메뉴 ID 추출
     }
   }, [location]);
 
@@ -79,12 +68,12 @@ const Header = () => {
 
   return (
     <>
-      <div className={`Header ${isScrolled ? "scrolled" : ""}`}>
+      <div className="Header">
         <div className="header_bg_area">
           <div className="header_bg"></div> 
         </div>
         <div className="header_dark"></div>
-        <div className={isScrolled ? "change_header" : "original_header"}>
+        <div className={scrollPosition < 100 ? "original_header" : "change_header"}>
           <div className="inner">
             <div className="Nav">
               <div className="nav_wrap">
@@ -92,7 +81,7 @@ const Header = () => {
                   {menus.map((menu) => (
                     <li key={menu.id} className="navbar" onClick={() => handleMenuClick(menu.id)}>
                       {menu.title}
-                      {(selectedMenu === menu.id && menu.subMenu.length > 0) && (
+                      {(selectedMenu === menu.id && menu.subMenu.length > 0) && ( // ✅ 선택된 메뉴의 2depth 유지
                         <ul className="sub visible">
                           <div className="inner">
                             {menu.subMenu.map((subItem, index) => (
@@ -112,7 +101,7 @@ const Header = () => {
               </div>
               <div className="SideMenu">
                 <div 
-                  className={isScrolled ? "change_all" : "all"} 
+                  className={scrollPosition < 100 ? "all" : "change_all"} 
                   onClick={openSidebar}
                 >
                   ☰전체보기

@@ -19,6 +19,7 @@ const Subpage = () => {
     ? page.subMenu[parsedSubIndex]?.img || []
     : page.img || [];
 
+
   return (
     <div className="Subpage">
       <div className="inner">

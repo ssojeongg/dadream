@@ -1,6 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import './assets/css/App.css';
 
 import Footer from './layout/Footer';
 import Header from './layout/Header';
@@ -15,13 +14,14 @@ function App() {
       <Header />
       <Sidebar />
       <Routes>
-        {/* 첫 화면을 Main.jsx로 설정 */}
+        {/* ✅ `/` 또는 `/sub/1`이면 Main.jsx를 렌더링 */}
         <Route path="/" element={<Main />} />
+        <Route path="/sub/1" element={<Navigate to="/" replace />} />  {/* ✅ 강제 리디렉트 */}
 
         {/* 주메뉴 및 서브메뉴 이동 */}
         <Route path="/sub/:id/:subIndex?" element={<Subpage />} />
 
-        {/* 존재하지 않는 경로 → 메인으로 리다이렉트 */}
+        {/* 존재하지 않는 경로 → 메인으로 리디렉트 */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <FloatingBtn />

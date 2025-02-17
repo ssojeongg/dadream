@@ -46,22 +46,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
-.icon {
+.sns > img {
   color: #666;
-  font-size: 24px;
   cursor: pointer;
+  width: 32px;
+  height: 33px;
 }
 
 .icon:hover {
   color: #888;
 }
 
-.divider {
-  color: #888;
-  font-size: 18px;
-}
+
 .Footer > .inner > .ft_bottom {
   max-width: 800px;
 }

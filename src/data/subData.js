@@ -48,7 +48,7 @@ import img48 from '../assets/img/mosaS0ofWp.jpeg';
 import img49 from '../assets/img/mosayk30.jpeg';
 
 const subData = [
-  { id: 1, title: "홈", subMenu: [] },
+  { id: 1, title: "홈", subMenu: [],},
 
   { 
     id: 2, 

@@ -1,5 +1,10 @@
 import "../assets/css/Footer.css"
 
+import band from "../assets/img/네이버밴드.png"
+import blog from "../assets/img/블로그로고.png"
+import cup from "../assets/img/컵.png"
+import facebook from "../assets/img/페이스북.png"
+
 import { FaFacebookF } from "react-icons/fa";
 import { BiCoffee } from "react-icons/bi";
 import { SiNaver, SiBlogger } from "react-icons/si";
@@ -16,13 +21,10 @@ const Footer = () => {
           </div>
           <div className="search_info">
             <div className="sns">
-              <SiBlogger className="icon" />
-              <span className="divider"></span>
-              <BiCoffee className="icon" />
-              <span className="divider"></span>
-              <FaFacebookF className="icon" />
-              <span className="divider"></span>
-              <SiNaver className="icon" />
+              <img src={blog}/>
+              <img src={cup}/>
+              <img src={facebook}/>
+              <img src={band}/>
             </div>
           </div>
         </div>
