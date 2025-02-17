@@ -1,5 +1,9 @@
 import "../assets/css/Footer.css"
 
+import { FaFacebookF } from "react-icons/fa";
+import { BiCoffee } from "react-icons/bi";
+import { SiNaver, SiBlogger } from "react-icons/si";
+
 const Footer = () => {
   return (
     <div className="Footer">
@@ -9,13 +13,16 @@ const Footer = () => {
             <p className="keyword">
               대전복지용구 다드림@
             </p>
-            <a href="javascript:void(0)">
-              <span className="blind">도움말</span>
-            </a>
           </div>
           <div className="search_info">
             <div className="sns">
-
+              <SiBlogger className="icon" />
+              <span className="divider"></span>
+              <BiCoffee className="icon" />
+              <span className="divider"></span>
+              <FaFacebookF className="icon" />
+              <span className="divider"></span>
+              <SiNaver className="icon" />
             </div>
           </div>
         </div>
