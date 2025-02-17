@@ -7,6 +7,8 @@ import Main from './layout/Main';
 import Subpage from "./pages/Subpage";
 import Sidebar from "./components/Sidebar";
 import FloatingBtn from "./components/FloatingBtn";
+import Submap from "./pages/Submap";
+import Subsns from "./pages/Subsns";
 
 function App() {
   return (
@@ -20,6 +22,12 @@ function App() {
 
         {/* 주메뉴 및 서브메뉴 이동 */}
         <Route path="/sub/:id/:subIndex?" element={<Subpage />} />
+        
+        {/* 오시는길 */}
+        <Route path="/sub/7/" element={<Submap />} />
+
+        {/* sns */}
+        <Route path="/sub/8/" element={<Subsns />} />
 
         {/* 존재하지 않는 경로 → 메인으로 리디렉트 */}
         <Route path="*" element={<Navigate to="/" />} />

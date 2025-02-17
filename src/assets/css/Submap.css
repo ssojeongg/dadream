@@ -1,0 +1,81 @@
+.Submap {
+  width: 100%;
+  padding: 80px 0;
+}
+.Submap > .inner > .submap_area {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ebebeb;
+  margin-bottom: 40px;
+}
+.Submap > .inner > .submap_area > .title {
+  display: inline-block;
+  color: var(--color-blue);
+  letter-spacing: -.8px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  padding-bottom: 7px;
+}
+.Submap > .inner > .map_area {
+  padding-top: 50px;
+  display: flex;
+  justify-content: left;
+  align-items:flex-start;
+  flex-direction: column;
+  gap: 50px;
+}
+.Submap > .inner > .map_area > .map_address {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Submap > .inner > .map_area > .map_address > .map_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.Submap > .inner > .map_area > .map_address > .map_btn > button {
+  width: auto;
+  height: 40px;
+  padding: 0 20px;
+  margin-left: 4px;
+  border-radius: 2px;
+  border: 0;
+  font-size: 15px;
+  font-weight: 100;
+  letter-spacing: -1px;
+  line-height: 40px;
+  color: #fff;
+  background-color: var(--color-blue);
+}
+.Submap > .inner > .map_area > .map_address > h2 {
+  font-size: 26px;
+  color: var(--color-blue)
+}
+.map_address, .map_time, .map_tel, .map_info {
+  width: 100%;
+  border-top: 1px solid #ebebeb;
+  padding-top: 50px;
+  display: flex;
+  gap: 30px;
+  font-size: 15px;
+}
+.map_address > p:first-child, .map_time > p:first-child, .map_tel > p:first-child, .map_info > p:first-child {
+  color: #111;
+  font-weight: bold;
+  width: 130px;
+}
+.map_address > p:nth-child(2), .map_time > p:nth-child(2), .map_tel > p:nth-child(2) {
+  width: 80px;
+}
+.map_info > ul:nth-of-type(1) {
+  width: 80px;
+}
+.gray {
+  color: #999;
+  font-weight: bold;
+}
