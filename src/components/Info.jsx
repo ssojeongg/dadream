@@ -1,4 +1,5 @@
 import "../assets/css/Info.css"
+import"../assets/responsive/R_Info.css";
 
 import logo from "../assets/img/mosaJiE9TD.jpeg"
 

@@ -1,4 +1,5 @@
 import '../assets/css/Header.css';
+import '../assets/responsive/R_Header.css'
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Sidebar from '../components/Sidebar.jsx';
@@ -25,9 +26,9 @@ const Header = () => {
     if (selectedMenu) {
       setSelectedMenu(menuId); // 선택된 메뉴 유지
       if (selectedMenu.subMenu.length > 0) {
-        navigate(`/sub/${menuId}/0`); // 첫 번째 서브페이지로 이동
+        navigate(`/sub/${menuId}/0`); // ✅ 문자열 템플릿(`) 사용
       } else {
-        navigate(`/sub/${menuId}`);
+        navigate(`/sub/${menuId}`); // ✅ 문자열 템플릿(`) 사용
       }
     }
   };
@@ -35,7 +36,7 @@ const Header = () => {
   // ✅ 서브메뉴 클릭 시 해당 페이지로 이동 & 메뉴 유지
   const handleSubMenuClick = (menuId, subIndex) => {
     setSelectedMenu(menuId); // 선택된 메뉴 유지
-    navigate(`/sub/${menuId}/${subIndex}`);
+    navigate(`/sub/${menuId}/${subIndex}`); // ✅ 문자열 템플릿(`) 사용
   };
 
   const openSidebar = () => {
@@ -50,7 +51,7 @@ const Header = () => {
   useEffect(() => {
     const pathParts = location.pathname.split("/");
     if (pathParts[1] === "sub" && pathParts[2]) {
-      setSelectedMenu(parseInt(pathParts[2], 10)); // 현재 URL에서 메뉴 ID 추출
+      setSelectedMenu(parseInt(pathParts[2], 10) || null); // ✅ 안전한 파싱
     }
   }, [location]);
 
@@ -76,12 +77,16 @@ const Header = () => {
         <div className={scrollPosition < 100 ? "original_header" : "change_header"}>
           <div className="inner">
             <div className="Nav">
+                <div className={scrollPosition < 100 ? "all" : "change_all"} 
+                  onClick={openSidebar}>
+                ☰
+                </div>
               <div className="nav_wrap">
                 <ul>
                   {menus.map((menu) => (
                     <li key={menu.id} className="navbar" onClick={() => handleMenuClick(menu.id)}>
                       {menu.title}
-                      {(selectedMenu === menu.id && menu.subMenu.length > 0) && ( // ✅ 선택된 메뉴의 2depth 유지
+                      {(selectedMenu === menu.id && menu.subMenu.length > 0) && (
                         <ul className="sub visible">
                           <div className="inner">
                             {menu.subMenu.map((subItem, index) => (
