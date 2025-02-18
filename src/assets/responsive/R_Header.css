@@ -1,4 +1,7 @@
-@media (max-width:767px) {
+@media (max-width: 767px) {
+  .Header  .inner:last-of-type {
+    overflow-x: visible;
+  }
   .change_header {
     background-color: var(--color-blue);
     width: 100%;
@@ -8,34 +11,63 @@
     z-index: 5;
     color: #fafafa;
   }
+
   .Header .inner:nth-last-of-type(1) {
     padding: 0 20px;
     border-bottom: none;
   }
+
   .nav_wrap {
     display: flex;
     overflow-x: auto;
+    flex-wrap: nowrap;
   }
+
   .Nav {
+    flex-shrink: 0;
     width: 340px;
   }
+
   .Nav > div {
     padding-right: 40px;
     color: #fff;
-  } 
+  }
+
+  .Nav .sub {
+    display: flex;
+    overflow-x: auto;
+    max-width: 360px;
+    padding-left: 20px;
+    scroll-padding-left: 20px;
+  }
+
+  .Nav .sub .inner {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    white-space: nowrap;
+    gap: 10px;
+    padding: 0 20px; /* ✅ 왼쪽 여백 추가 */
+    position: relative; /* ✅ 스크롤이 올바르게 작동하도록 설정 */
+  }
+
+  .Nav .sub .inner > *:first-child {
+    scroll-margin-left: 20px; /* ✅ 첫 번째 요소가 안 잘리도록 설정 */
+  }
+
   .Nav > div:nth-of-type(1) {
     font-size: 22px;
     font-weight: bold;
     padding-bottom: 4px;
   }
-  .Nav ul {
-    
-  }
-  .Nav .navbar:nth-child(3):after,.Nav .navbar:nth-child(4):after, .Nav .navbar:nth-child(5):after {
-    display: none;
-  }
-  .SideMenu > div {
+
+  .Nav .navbar:nth-child(3):after,
+  .Nav .navbar:nth-child(4):after,
+  .Nav .navbar:nth-child(5):after {
     display: none;
   }
 
+  .SideMenu > div {
+    display: none;
+  }
 }

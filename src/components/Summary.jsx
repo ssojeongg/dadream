@@ -1,8 +1,9 @@
 import "../assets/css/Summary.css"
+import "../assets/responsive/R_Summary.css"
 
-const Summary = ({ title, more, hover_img, detail }) => {
+const Summary = ({ className="", title, more, hover_img, detail }) => {
   return (
-    <div className="Summary">
+    <div className={`Summary ${className}`}>
       <div className="inner">
         <div className="summary_area">
           <p className="title">{title}</p>

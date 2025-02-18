@@ -9,6 +9,7 @@
     z-index: 1000;
     padding: 0;
     display: none; /* 기본적으로 숨김 */
+    overflow-y: scroll;
   }
   .sidebar_area {
     color: #fff;
