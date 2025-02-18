@@ -58,7 +58,6 @@ const Main = () => {
         <Summary className="hide_on_mobile" title={"대여품목"} more={"더보기"} hover_img={goyk30} detail={"전동침대 / 수동휠체어 / 욕창예방매트리스"}/>
         <Summary title={"다드림복지용구 안내"} more={"더보기"} hover_img={wjjrv} />
         <Banner className="hide_on_mobile"/>
-      
     </div>
   );
 };

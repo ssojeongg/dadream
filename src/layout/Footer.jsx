@@ -1,9 +1,12 @@
 import "../assets/css/Footer.css"
+import "../assets/responsive/R_Footer.css"
 
 import band from "../assets/img/네이버밴드.png"
 import blog from "../assets/img/블로그로고.png"
 import cup from "../assets/img/컵.png"
 import facebook from "../assets/img/페이스북.png"
+
+import logo from "../assets/img/mosaJiE9TD.jpeg"
 
 import { FaFacebookF } from "react-icons/fa";
 import { BiCoffee } from "react-icons/bi";
@@ -28,6 +31,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        <div className="search_logo">
+            <img src={logo}/>
+          </div>
         <div className="ft_bottom">
           <ul className="list_info">
             <li>다드림 복지용구</li>

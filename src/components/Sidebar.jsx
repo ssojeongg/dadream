@@ -1,24 +1,16 @@
 import '../assets/css/Sidebar.css';
-import '../assets/responsive/R_Sidebar.css'
-import logo from "../assets/img/mosaJiE9TD.jpeg"
+import '../assets/responsive/R_Sidebar.css';
+import logo from "../assets/img/mosaJiE9TD.jpeg";
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff, faShareAlt, faCommentDots, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = ({ isOpen, onClose }) => {
   const [openMenu, setOpenMenu] = useState(null);
+  const navigate = useNavigate();
 
-  // 메뉴 클릭 시 상태 변경
-  const toggleMenu = (menu) => {
-    if (menu.subMenu.length === 0) {
-      setOpenMenu(null);
-    } else {
-      setOpenMenu(openMenu === menu.id ? null : menu.id);
-    }
-  };
-
-  // 메뉴 데이터
   const menus = [
     { id: 1, title: "홈", subMenu: [] },
     { id: 2, title: "대여품목", subMenu: [] },
@@ -27,9 +19,10 @@ const Sidebar = ({ isOpen, onClose }) => {
     { id: 5, title: "노인장기요양보험", subMenu: ["노인장기요양보험이란?", "장기요양등급의 구분"], badge: "2" },
     { id: 6, title: "장기요양등급 신청 절차", subMenu: [] },
     { id: 7, title: "오시는길", subMenu: [] },
-    { id: 8, title: "sns", subMenu: [] },
+    { id: 8, title: "SNS", subMenu: [] },
     { id: 9, title: "다드림복지용구 안내", subMenu: [] },
   ];
+
   const menuItems = [
     { icon: faPowerOff, label: "로그인" },
     { icon: faShareAlt, label: "공유하기" },
@@ -37,33 +30,62 @@ const Sidebar = ({ isOpen, onClose }) => {
     { icon: faPhone, label: "전화하기" },
   ];
 
+  const toggleMenu = (menu) => {
+    if (menu.subMenu.length === 0) {
+      navigate(`/menu/${menu.id}`);
+      if (window.innerWidth <= 767) {
+        onClose(); // ✅ 모바일에서 클릭하면 모달 닫힘
+      }
+    } else {
+      setOpenMenu(openMenu === menu.id ? null : menu.id);
+    }
+  };
+
+  const handleSubMenuClick = (menuId, subItem) => {
+    navigate(`/sub/${menuId}/${subItem}`);
+
+    if (window.innerWidth <= 767) {
+      onClose(); // ✅ 모바일에서 클릭하면 모달 닫힘
+    }
+  };
+
   return (
     <div className={`Sidebar ${isOpen ? 'show' : ''}`}>
       <div className="inner">
         <div className="sidebar_area">
           <div className="sidebar_area_left">
-            <img src={logo} />
+            <img src={logo} alt="로고" />
             <div className="logo">대전복지용구 다드림</div>
           </div>
           <button className="sidebar_close" onClick={onClose}>✕</button>
         </div>
         <div className="icon_menu">
-      {menuItems.map((item, index) => (
-        <div key={index} className="menu_item">
-          <FontAwesomeIcon icon={item.icon} className="icon" />
-          <span className="label">{item.label}</span>
+          {menuItems.map((item, index) => (
+            <div key={index} className="menu_item">
+              <FontAwesomeIcon icon={item.icon} className="icon" />
+              <span className="label">{item.label}</span>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
       </div>
+      
       <ul>
         {menus.map((menu) => (
           <li key={menu.id} className="sidebar" onClick={() => toggleMenu(menu)}>
             {menu.title}
             {menu.subMenu.length > 0 && (
-              <ul className={`side_sub ${openMenu === menu.id ? 'active' : ''}`}>
+              <ul className={`side_sub ${openMenu === menu.id ? "active" : ""}`}>
                 {menu.subMenu.map((subItem, index) => (
-                  <li key={index} className="side_subbar">{subItem}</li>
+                  <li
+                    key={index}
+                    className="side_subbar"
+                    onClick={(e) => {
+                      e.stopPropagation(); // ✅ 부모 메뉴 클릭 방지
+                      handleSubMenuClick(menu.id, subItem);
+                    }}
+                  >
+                    {subItem}
+                  </li>
                 ))}
               </ul>
             )}
