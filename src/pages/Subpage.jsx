@@ -1,4 +1,5 @@
 import "../assets/css/Subpage.css";
+import "../assets/responsive/R_Subpage.css"
 import { useParams } from "react-router-dom";
 import subData from "../data/subData";
 

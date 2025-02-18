@@ -15,6 +15,7 @@
     padding-right: 0;
     white-space: nowrap;
     max-width: 300px;
+    padding-top: 80px;
   }
   .Info > .inner > .info_site > .info_logo img {
     border-radius: 50%;

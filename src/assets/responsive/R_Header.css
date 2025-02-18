@@ -1,8 +1,42 @@
 @media (max-width: 767px) {
+  /* ✅ 기본 Header 스타일 */
+.Header {
+  width: 100%;
+  transition: height 0.3s ease-in-out;
+}
+
+/* ✅ subpage에서만 height 100px 적용 */
+.Header.subpage {
+  height: 150px;
+}
+
+  .header_dark {
+    width: 100%;
+    height: 100px; /* 기본 높이 */
+    background-color: rgba(0, 0, 0, 0.5); /* 어두운 배경 효과 */
+    transition: height 0.3s ease-in-out; /* 부드러운 전환 효과 */
+  }
+  
+  /* ✅ subpage일 때 .header_dark 숨기기 및 공간 제거 */
+  .header_dark.hidden {
+    height: 0;
+    overflow: hidden;
+  }
+
+
   .Header  .inner:last-of-type {
     overflow-x: visible;
   }
   .change_header {
+    background-color: var(--color-blue);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    color: #fafafa;
+  }
+  .original_header {
     background-color: var(--color-blue);
     width: 100%;
     position: fixed;

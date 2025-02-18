@@ -1,0 +1,22 @@
+@media (max-width:767px) {
+  .Subpage {
+    width: 100%;
+    padding: 0;
+  }
+  .Subpage > .inner {
+    padding: 0 20px;
+  }
+  .Subpage > .inner > .subpage_area > .title::before {
+    display: inline-block;
+    content: '';
+    height: 25px;
+    width: 5px;
+    background-color: var(--color-blue);
+    position: absolute;
+    top: 0;
+    left: -20px;
+  }
+  .Subpage > .inner > .img_area img {
+    max-width: 360px;
+  }
+}

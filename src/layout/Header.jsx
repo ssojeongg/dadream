@@ -9,7 +9,7 @@ const Header = () => {
   const location = useLocation();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [selectedMenu, setSelectedMenu] = useState(null); // ✅ 현재 선택된 메뉴 상태 추가
+  const [selectedMenu, setSelectedMenu] = useState(null);
 
   useEffect(() => {
     const updateScroll = () => {
@@ -19,24 +19,22 @@ const Header = () => {
     return () => window.removeEventListener('scroll', updateScroll);
   }, []);
 
-  // ✅ 주메뉴 클릭 시 첫 번째 서브페이지로 이동 & 해당 메뉴 활성화
   const handleMenuClick = (menuId) => {
     const selectedMenu = menus.find((m) => m.id === menuId);
 
     if (selectedMenu) {
-      setSelectedMenu(menuId); // 선택된 메뉴 유지
+      setSelectedMenu(menuId);
       if (selectedMenu.subMenu.length > 0) {
-        navigate(`/sub/${menuId}/0`); // ✅ 문자열 템플릿(`) 사용
+        navigate(`/sub/${menuId}/0`);
       } else {
-        navigate(`/sub/${menuId}`); // ✅ 문자열 템플릿(`) 사용
+        navigate(`/sub/${menuId}`);
       }
     }
   };
 
-  // ✅ 서브메뉴 클릭 시 해당 페이지로 이동 & 메뉴 유지
   const handleSubMenuClick = (menuId, subIndex) => {
-    setSelectedMenu(menuId); // 선택된 메뉴 유지
-    navigate(`/sub/${menuId}/${subIndex}`); // ✅ 문자열 템플릿(`) 사용
+    setSelectedMenu(menuId);
+    navigate(`/sub/${menuId}/${subIndex}`);
   };
 
   const openSidebar = () => {
@@ -47,11 +45,10 @@ const Header = () => {
     setIsSidebarOpen(false);
   };
 
-  // ✅ 현재 경로가 변경될 때 선택된 메뉴 유지
   useEffect(() => {
     const pathParts = location.pathname.split("/");
     if (pathParts[1] === "sub" && pathParts[2]) {
-      setSelectedMenu(parseInt(pathParts[2], 10) || null); // ✅ 안전한 파싱
+      setSelectedMenu(parseInt(pathParts[2], 10) || null);
     }
   }, [location]);
 
@@ -67,21 +64,27 @@ const Header = () => {
     { id: 9, title: "다드림복지용구 안내", subMenu: [] },
   ];
 
+  const isSubPage = location.pathname.startsWith("/sub"); // ✅ subpage 여부 확인
+
   return (
     <>
-      <div className="Header">
-        <div className="header_bg_area">
-          <div className="header_bg"></div> 
-        </div>
-        <div className="header_dark"></div>
+      {/* ✅ subpage일 때만 .subpage 클래스를 추가하여 height: 100px 적용 */}
+      <div className={`Header ${isSubPage ? 'subpage' : ''}`}>
+        {!isSubPage && (
+          <div className="header_bg_area">
+            <div className="header_bg"></div>
+          </div>
+        )}
+        <div className={`header_dark ${isSubPage ? 'hidden' : ''}`}></div>
+        
+        {/* ✅ 1depth 메뉴 항상 표시 */}
         <div className={scrollPosition < 100 ? "original_header" : "change_header"}>
           <div className="inner">
             <div className="Nav">
-                <div className={scrollPosition < 100 ? "all" : "change_all"} 
-                  onClick={openSidebar}>
+              <div className={scrollPosition < 100 ? "all" : "change_all"} onClick={openSidebar}>
                 ☰
-                </div>
-              <div className="nav_wrap">
+              </div>
+              <div className="nav_wrap"> 
                 <ul>
                   {menus.map((menu) => (
                     <li key={menu.id} className="navbar" onClick={() => handleMenuClick(menu.id)}>
@@ -105,10 +108,7 @@ const Header = () => {
                 </ul>
               </div>
               <div className="SideMenu">
-                <div 
-                  className={scrollPosition < 100 ? "all" : "change_all"} 
-                  onClick={openSidebar}
-                >
+                <div className={scrollPosition < 100 ? "all" : "change_all"} onClick={openSidebar}>
                   ☰전체보기
                 </div>
               </div>
