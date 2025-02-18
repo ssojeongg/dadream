@@ -1,5 +1,19 @@
+/* ✅ .header_dark 기본 스타일 */
+.header_dark {
+  width: 100%;
+  height: 400px; /* 기본 높이 */
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: height 0.3s ease-in-out;
+}
+
+/* ✅ subpage 또는 PC에서도 숨김 */
+.header_dark.hidden {
+  display: none !important;
+  height: 0 !important;
+}
 
 .original_header {
+  background-color: none;
   width: 100%;
   position: fixed;
   top: 0;
@@ -19,16 +33,11 @@
 
 .Header {
   width: 100%;
-  height: 400px;
   overflow-y: hidden;
   width: 100%;
   position: relative;
 }
-.Header > .header_dark {
-  width: 100%;
-  height: 400px;
-  opacity: 0.44;
-  
+.Header.subpage {
 }
 .Header .inner {
   border-bottom: 1px solid rgba(255,255,255,.2);
@@ -56,12 +65,15 @@
   left: 0;
 }
 .Nav {
-  width: 100%;
+  max-width: 360px;
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 16px;
+}
+.Nav > div:first-of-type {
+  display: none;
 }
 .Nav ul {
   display: flex;
@@ -162,8 +174,14 @@
   color: var(--color-blue);
   border-bottom: 1px solid var(--color-blue);
 }
+.all {
+  padding-left: 80px;
+  height: 24px;
+}
 .change_all {
   color: #000000;
+  height: 24px;
+  padding-left: 80px;
 }
 
 .SideMenu {

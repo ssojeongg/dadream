@@ -7,12 +7,11 @@
 
 /* ✅ subpage에서만 height 100px 적용 */
 .Header.subpage {
-  height: 150px;
+  height: 11.5rem;
 }
 
   .header_dark {
     width: 100%;
-    height: 100px; /* 기본 높이 */
     background-color: rgba(0, 0, 0, 0.5); /* 어두운 배경 효과 */
     transition: height 0.3s ease-in-out; /* 부드러운 전환 효과 */
   }
@@ -47,7 +46,7 @@
   }
 
   .Header .inner:nth-last-of-type(1) {
-    padding: 0 20px;
+    padding: 0 1.5rem;
     border-bottom: none;
   }
 
@@ -59,20 +58,19 @@
 
   .Nav {
     flex-shrink: 0;
-    width: 340px;
   }
 
   .Nav > div {
-    padding-right: 40px;
+    padding-right: 3rem;
     color: #fff;
   }
 
   .Nav .sub {
     display: flex;
     overflow-x: auto;
-    max-width: 360px;
-    padding-left: 20px;
-    scroll-padding-left: 20px;
+    max-width: 27.6;
+    padding-left: 1.5rem;
+    scroll-padding-left: 1.5rem;
   }
 
   .Nav .sub .inner {
@@ -80,19 +78,19 @@
     justify-content: start;
     align-items: center;
     white-space: nowrap;
-    gap: 10px;
-    padding: 0 20px; /* ✅ 왼쪽 여백 추가 */
+    gap: 0.5rem;
+    padding: 0 1.5rem; /* ✅ 왼쪽 여백 추가 */
     position: relative; /* ✅ 스크롤이 올바르게 작동하도록 설정 */
   }
 
   .Nav .sub .inner > *:first-child {
-    scroll-margin-left: 20px; /* ✅ 첫 번째 요소가 안 잘리도록 설정 */
+    scroll-margin-left: 1.5rem; /* ✅ 첫 번째 요소가 안 잘리도록 설정 */
   }
 
   .Nav > div:nth-of-type(1) {
-    font-size: 22px;
+    font-size: 1.6rem;
     font-weight: bold;
-    padding-bottom: 4px;
+    padding-bottom: 0.3rem;
   }
 
   .Nav .navbar:nth-child(3):after,

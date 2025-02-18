@@ -1,6 +1,6 @@
 @media (max-width:767px) {
   .Main > .inner {
-    padding: 0 20px;
+    padding: 0 1.5rem;
   }
   .info_intro_mobile {
     display: block;
@@ -8,32 +8,32 @@
   }
   .info_intro_mobile .info_title {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 1.3rem;
     position: relative;
   }
   .info_intro_mobile .info_title::before {
     display: inline-block;
     content: '';
-    height: 25px;
-    width: 5px;
+    height: 1.9rem;
+    width: 0.3rem;
     background-color: var(--color-blue);
     position: absolute;
     top: 0;
-    left: -20px;
+    left: -1.5rem;
   }
   .info_intro_mobile .info_txt {
-    padding-top: 20px;
+    padding-top: 1.5rem;
     line-height: 1.5;
   }
   .nav_main_wrap {
     overflow-x: hidden;
     display: block;
-    margin: 30px 0;
-    padding: 10px 20px;
-    max-width: 360px;
+    margin: 2.3rem 0;
+    padding: 0.7rem 1.5rem;
+    max-width: 27.6rem;
     background-color: var(--color-blue);
-    border-top: 8px solid #ddd;
-    border-bottom: 8px solid #ddd;
+    border-top: 0.6rem solid #ddd;
+    border-bottom: 0.6rem solid #ddd;
   }
   .nav_main_wrap > ul {
 
@@ -41,8 +41,8 @@
   .nav_main_wrap > ul > li{
     width: 100%;
     color: #fff;
-    font-size: 16px;
-    padding: 10px 0;
+    font-size: 1.2rem;
+    padding: 0.7rem 0;
   }
   .hide_on_mobile {
     display: none !important;

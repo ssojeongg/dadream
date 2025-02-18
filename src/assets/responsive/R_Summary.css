@@ -4,14 +4,14 @@
     padding-top: 0;
   }
   .Summary > .inner {
-    padding: 0 20px;
+    padding: 0 1.5rem;
   }
   .Summary > .inner > .summary_area {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: none;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
   }
   .Summary > .inner > .summary_area > .title {
     position: relative;
@@ -21,39 +21,39 @@
   .Summary > .inner > .summary_area > .title::before {
     display: inline-block;
     content: '';
-    height: 25px;
-    width: 5px;
+    height: 1.9rem;
+    width: 0.3rem;
     background-color: var(--color-blue);
     position: absolute;
-    top: 0;
-    left: -20px;
+    top: -0.3rem;
+    left: -1.5rem;
   }
   .Summary > .inner > .summary_area .more_btn {
     display: none;
   }
   
   .Summary > .inner > .img_area {
-    max-width: 320px;
+    max-width: 20rem;
     height: 100%;
     overflow: hidden;
     display: flex;
     justify-content: left;
     align-items: start;
-    gap: 25px;
+    gap: 1.9rem;
   }
   .Summary > .inner > .img_area > .hover_img {
     transition: 0.3s;
-    max-width: 320px;
+    max-width: 20rem;
   }
   .Summary > .inner > .img_area > .hover_img:hover {
     transform: scale(1.05);
   }
   .Summary > .inner > .img_area > .detail {
-    max-width: 530px;
+    max-width: 40.7rem;
     display: block;
-    font-size: 20px;
+    font-size: 1.5rem;
     font-weight: bold;
-    line-height: 34px;
+    line-height: 2.6rem;
     color: var(--color-blue);
   }
   .Summary > .inner > .btn {
@@ -61,24 +61,24 @@
     justify-content: center;
     align-items: center;
     border-top: 1px solid #ebebeb;
-    margin-top: 30px;
+    margin-top: 2.3rem;
   }
   .Summary > .inner > .btn > .more_btn_mobile {
     color: var(--color-gray);
-    width: 40px;
+    width: 3.0rem;
     cursor: pointer;
     position: relative;
-    padding-right: 5px;
-    padding: 20px 0;
+    padding-right: 0.3rem;
+    padding: 1.5rem 0;
     text-align: center;
   }
   .Summary > .inner > .btn > .more_btn_mobile::after {
     content: ">";
     position: absolute;
-    top: 20px;
-    right:-15px;
-    width: 10px;
+    top: 1.5rem;
+    left: 3rem;
+    width: 0.7rem;
     height: 10px;
-    display: inline-block;
+    display: 0.7rem;
   }
 }

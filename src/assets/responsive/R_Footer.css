@@ -3,8 +3,8 @@
     width: 100%;
     height: auto;
     background-color: #fff;
-    padding: 30px 0;
-    border-top: 8px solid #ddd;
+    padding: 2.3rem 0;
+    border-top: 0.6rem solid #ddd;
   }
   .search_logo {
     display: block;
@@ -13,8 +13,8 @@
     align-items: center;
   }
   .search_logo > img {
-    width: 60px;
-    height: 60px;
+    width: 4.6rem;
+    height: 4.6rem;
   }
   .Footer > .inner > .ft_top {
     display: none;
@@ -23,7 +23,7 @@
     display: none;
   }
   .Footer > .inner > .ft_bottom {
-    max-width: 360px;
+    max-width: 27.6rem;
   }
   .Footer > .inner > .ft_bottom > ul {
     display: flex;

@@ -4,19 +4,19 @@
     padding: 0;
   }
   .Subpage > .inner {
-    padding: 0 20px;
+    padding: 0 1.5rem;
   }
   .Subpage > .inner > .subpage_area > .title::before {
     display: inline-block;
     content: '';
-    height: 25px;
-    width: 5px;
+    height: 1.9rem;
+    width: 0.3rem;
     background-color: var(--color-blue);
     position: absolute;
     top: 0;
-    left: -20px;
+    left: -1.5rem;
   }
   .Subpage > .inner > .img_area img {
-    max-width: 360px;
+    max-width: 20rem;
   }
 }
