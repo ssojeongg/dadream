@@ -1,5 +1,10 @@
 import '../assets/css/Sidebar.css';
+import '../assets/responsive/R_Sidebar.css'
+import logo from "../assets/img/mosaJiE9TD.jpeg"
 import { useState } from 'react';
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPowerOff, faShareAlt, faCommentDots, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = ({ isOpen, onClose }) => {
   const [openMenu, setOpenMenu] = useState(null);
@@ -25,14 +30,31 @@ const Sidebar = ({ isOpen, onClose }) => {
     { id: 8, title: "sns", subMenu: [] },
     { id: 9, title: "다드림복지용구 안내", subMenu: [] },
   ];
+  const menuItems = [
+    { icon: faPowerOff, label: "로그인" },
+    { icon: faShareAlt, label: "공유하기" },
+    { icon: faCommentDots, label: "톡톡하기" },
+    { icon: faPhone, label: "전화하기" },
+  ];
 
   return (
     <div className={`Sidebar ${isOpen ? 'show' : ''}`}>
       <div className="inner">
         <div className="sidebar_area">
-          <div className="logo">대전복지용구 다드림</div>
+          <div className="sidebar_area_left">
+            <img src={logo} />
+            <div className="logo">대전복지용구 다드림</div>
+          </div>
           <button className="sidebar_close" onClick={onClose}>✕</button>
         </div>
+        <div className="icon_menu">
+      {menuItems.map((item, index) => (
+        <div key={index} className="menu_item">
+          <FontAwesomeIcon icon={item.icon} className="icon" />
+          <span className="label">{item.label}</span>
+        </div>
+      ))}
+    </div>
       </div>
       <ul>
         {menus.map((menu) => (

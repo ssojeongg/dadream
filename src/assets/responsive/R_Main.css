@@ -1,0 +1,28 @@
+@media (max-width:767px) {
+  .Main > .inner {
+    padding: 0 20px;
+  }
+  .info_intro_mobile {
+    display: block;
+  }
+  .info_intro_mobile .info_title {
+    font-weight: bold;
+    font-size: 18px;
+    position: relative;
+  }
+  .info_intro_mobile .info_title::before {
+    display: inline-block;
+    content: '';
+    height: 25px;
+    width: 5px;
+    background-color: var(--color-blue);
+    position: absolute;
+    top: 0;
+    left: -20px;
+  }
+  .info_intro_mobile .info_txt {
+    padding-top: 20px;
+    line-height: 1.5;
+    
+  }
+}

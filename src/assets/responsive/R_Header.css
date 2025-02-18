@@ -9,7 +9,7 @@
     color: #fafafa;
   }
   .Header .inner:nth-last-of-type(1) {
-    padding: 0 30px;
+    padding: 0 20px;
     border-bottom: none;
   }
   .nav_wrap {
@@ -23,6 +23,11 @@
     padding-right: 40px;
     color: #fff;
   } 
+  .Nav > div:nth-of-type(1) {
+    font-size: 22px;
+    font-weight: bold;
+    padding-bottom: 4px;
+  }
   .Nav ul {
     
   }
