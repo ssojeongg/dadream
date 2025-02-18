@@ -88,9 +88,11 @@
   }
 
   .Nav > div:nth-of-type(1) {
-    font-size: 1.6rem;
+    display: block;
+    font-size: 1.2rem;
     font-weight: bold;
     padding-bottom: 0.3rem;
+    padding-left: 0;
   }
 
   .Nav .navbar:nth-child(3):after,
@@ -102,4 +104,5 @@
   .SideMenu > div {
     display: none;
   }
+  
 }
