@@ -1,9 +1,9 @@
 import "../assets/css/Banner.css"
 import BannerInfo from "./BannerInfo"
 
-const Banner = () => {
+const Banner = ({ className="",}) => {
   return (
-    <div className="Banner">
+    <div className={`Banner ${className}`}>
       <div className="inner">
         <div className="banner_top_area">
           <BannerInfo b_title={"판매품목"} />

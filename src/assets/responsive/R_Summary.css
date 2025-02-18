@@ -1,45 +1,39 @@
 @media (max-width:767px) {
   .Summary {
     width: 100%;
-    padding-top: 80px;
+    padding-top: 0;
+  }
+  .Summary > .inner {
+    padding: 0 20px;
   }
   .Summary > .inner > .summary_area {
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ebebeb;
-    margin-bottom: 40px;
+    border-bottom: none;
+    margin-bottom: 10px;
   }
   .Summary > .inner > .summary_area > .title {
-    display: inline-block;
-    border-bottom: 1px solid var(--color-blue);
-    color: var(--color-blue);
-    letter-spacing: -.8px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    padding-bottom: 7px;
-  }
-  .Summary > .inner > .summary_area .more_btn {
-    color: var(--color-gray);
-    width: 40px;
-    cursor: pointer;
     position: relative;
-    padding-right: 5px;
+    border-bottom: none;
+    color: var(--color-black);
   }
-  .Summary > .inner > .summary_area .more_btn::after {
-    content: ">";
+  .Summary > .inner > .summary_area > .title::before {
+    display: inline-block;
+    content: '';
+    height: 25px;
+    width: 5px;
+    background-color: var(--color-blue);
     position: absolute;
     top: 0;
-    right: -5px;
-    width: 10px;
-    height: 10px;
-    display: inline-block;
+    left: -20px;
+  }
+  .Summary > .inner > .summary_area .more_btn {
+    display: none;
   }
   
   .Summary > .inner > .img_area {
-    width: 100%;
+    max-width: 320px;
     height: 100%;
     overflow: hidden;
     display: flex;
@@ -49,6 +43,7 @@
   }
   .Summary > .inner > .img_area > .hover_img {
     transition: 0.3s;
+    max-width: 320px;
   }
   .Summary > .inner > .img_area > .hover_img:hover {
     transform: scale(1.05);
@@ -60,5 +55,30 @@
     font-weight: bold;
     line-height: 34px;
     color: var(--color-blue);
+  }
+  .Summary > .inner > .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #ebebeb;
+    margin-top: 30px;
+  }
+  .Summary > .inner > .btn > .more_btn_mobile {
+    color: var(--color-gray);
+    width: 40px;
+    cursor: pointer;
+    position: relative;
+    padding-right: 5px;
+    padding: 20px 0;
+    text-align: center;
+  }
+  .Summary > .inner > .btn > .more_btn_mobile::after {
+    content: ">";
+    position: absolute;
+    top: 20px;
+    right:-15px;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
   }
 }

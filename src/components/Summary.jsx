@@ -13,6 +13,9 @@ const Summary = ({ className="", title, more, hover_img, detail }) => {
           <img className="hover_img" src={hover_img} />
           <p className="detail">{detail}</p>
         </div>
+        <div className="btn">
+          <p className="more_btn_mobile">{more}</p>
+        </div>  
       </div>
     </div>
   )
