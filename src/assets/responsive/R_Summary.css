@@ -64,6 +64,7 @@
     margin-top: 2.3rem;
   }
   .Summary > .inner > .btn > .more_btn_mobile {
+    display: block;
     color: var(--color-gray);
     width: 3.0rem;
     cursor: pointer;

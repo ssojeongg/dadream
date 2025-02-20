@@ -60,3 +60,6 @@
   line-height: 34px;
   color: var(--color-blue);
 }
+.more_btn_mobile {
+  display: none;
+}
