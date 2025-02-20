@@ -1,18 +1,18 @@
 @media (max-width:767px) {
   .Submap {
     padding: 0;
-    padding-bottom: 30px;
+    padding-bottom: 2.3rem;
   }
   .Submap > .inner {
-    padding: 0 20px;
+    padding: 0 1.5rem;
   } 
   .Submap > .inner > .map_area {
-    padding-top: 30px;
+    padding-top: 2.3rem;
     display: flex;
     justify-content: left;
     align-items:flex-start;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.5rem;
   }
   .Submap > .inner > .map_area > .map_address {
     display: flex;
@@ -22,18 +22,20 @@
   .Submap > .inner > .map_area > .map_address > .map_address_area {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.7rem;
   }
   .Submap > .inner > .map_area > .map_address h2:nth-of-type(1) {
     display: block;
     color: var(--color-black);
+    font-weight: bold;
   }
   .Submap > .inner > .map_area > .map_address .map_btn {
     display: none;
   }
   .Submap > .inner > .map_area > .map_address h2 {
-    font-size: 15px;
+    font-size: 0.9rem;
     color: #999;
+    font-weight: normal;  
   }
   .map_address, .map_time, .map_tel, .map_info {
     width: 100%;
@@ -52,5 +54,8 @@
     font-size: 15px;
     display: flex;
     flex-direction: column;
+  }
+  .gray {
+    font-weight: normal;
   }
 }

@@ -31,7 +31,7 @@
 }
 .card {
   flex: 1 1 calc(33.333% - 16px); /* 3개씩 배치 */
-  background: #fafafa;
+  background-color: #fafafa;
   padding: 40px 40px 45px;
   max-width: 273px;
   height: 268px;
@@ -66,4 +66,13 @@
   color: #333;
   font-weight: bold;
   font-size: 15px;
+}
+.meta_info > .id {
+  display: none;
+}
+.meta_info .logo {
+  display: none;
+}
+.more {
+  display: none;
 }

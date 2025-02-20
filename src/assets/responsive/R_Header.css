@@ -68,8 +68,8 @@
   .Nav .sub {
     display: flex;
     overflow-x: auto;
-    max-width: 27.6;
-    padding-left: 1.5rem;
+    max-width: 27.6rem;
+    /* padding-left: 1.5rem; */
     scroll-padding-left: 1.5rem;
   }
 

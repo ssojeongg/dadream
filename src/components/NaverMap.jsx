@@ -9,7 +9,7 @@ const NaverMap = () => {
     // 🔹 화면 크기에 따라 지도 크기 변경
     const updateMapSize = () => {
       if (window.innerWidth <= 767) {
-        setMapSize({ width: "320px", height: "320px" });
+        setMapSize({ height: "320px" });
       } else {
         setMapSize({ width: "100%", height: "400px" });
       }
