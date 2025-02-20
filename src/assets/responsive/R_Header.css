@@ -7,7 +7,7 @@
 
 /* ✅ subpage에서만 height 100px 적용 */
 .Header.subpage {
-  height: 11.5rem;
+  height: 9rem;
 }
 
   .header_dark {

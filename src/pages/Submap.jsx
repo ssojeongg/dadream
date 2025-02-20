@@ -1,4 +1,5 @@
 import '../assets/css/Submap.css'
+import '../assets/responsive/R_Submap.css'
 import NaverMap from '../components/NaverMap.jsx'
 import '../data/subData.js'
 
@@ -12,7 +13,10 @@ const Submap = () => {
           <NaverMap />
         <div className="map_area">
           <div className="map_address">
+            <div className="map_address_area">
+            <h2>주소</h2>
             <h2>대전광역시 서구 가수원로 62 (가수원동) 1층</h2>
+          </div>            
             <div className="map_btn">
               <button>길찾기</button>
               <button>지도에서보기</button>
@@ -29,6 +33,7 @@ const Submap = () => {
           </div>
           <div className="map_info">
             <p>사업자정보</p>
+            <div className="map_info_area">
             <ul className='gray'>
               <li>상호명</li>
               <li>대표자</li>
@@ -41,6 +46,7 @@ const Submap = () => {
               <li>439-32-01585</li>
               <li>bc1592@naver.com</li>
             </ul>
+          </div>
           </div>
         </div>
       </div>
