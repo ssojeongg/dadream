@@ -32,25 +32,29 @@
 .card {
   flex: 1 1 calc(33.333% - 16px); /* 3개씩 배치 */
   background-color: #fafafa;
-  padding: 40px 40px 45px;
+  padding: 45px 40px 45px;
   max-width: 273px;
   height: 268px;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: start;
+  align-items:first baseline;
   flex-direction: column;
 }
 
 .title {
-  font-size: 18px;
+  font-size: 0.9rem;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .content {
-  font-size: 14px;
   color: #666;
   margin-bottom: 10px;
+  line-height: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  height: 216px;
+  overflow: hidden;
 }
 
 .meta_info {
