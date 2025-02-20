@@ -3,6 +3,7 @@ import '../assets/responsive/R_Sidebar.css';
 import logo from "../assets/img/mosaJiE9TD.jpeg";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import menus from '../data/subData';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff, faShareAlt, faCommentDots, faPhone } from "@fortawesome/free-solid-svg-icons";
@@ -10,18 +11,6 @@ import { faPowerOff, faShareAlt, faCommentDots, faPhone } from "@fortawesome/fre
 const Sidebar = ({ isOpen, onClose }) => {
   const [openMenu, setOpenMenu] = useState(null);
   const navigate = useNavigate();
-
-  const menus = [
-    { id: 1, title: "홈", subMenu: [] },
-    { id: 2, title: "대여품목", subMenu: [] },
-    { id: 3, title: "판매품목", subMenu: ["판매) 이동변기", "판매) 목욕의자", "판매) 지팡이", "판매) 성인용보행기(실버카)", "판매) 미끄럼방지용품", "판매) 안전손잡이", "판매) 요실금팬티", "판매) 욕창예방방석", "판매) 경사로", "판매) 자세변환용구"], badge: "10" },
-    { id: 4, title: "복지용구 안내", subMenu: ["복지용구란?", "복지용구 구분", "복지용구 이용절차"], badge: "3" },
-    { id: 5, title: "노인장기요양보험", subMenu: ["노인장기요양보험이란?", "장기요양등급의 구분"], badge: "2" },
-    { id: 6, title: "장기요양등급 신청 절차", subMenu: [] },
-    { id: 7, title: "오시는길", subMenu: [] },
-    { id: 8, title: "SNS", subMenu: [] },
-    { id: 9, title: "다드림복지용구 안내", subMenu: [] },
-  ];
 
   const menuItems = [
     { icon: faPowerOff, label: "로그인" },
@@ -32,7 +21,15 @@ const Sidebar = ({ isOpen, onClose }) => {
 
   const toggleMenu = (menu) => {
     if (menu.subMenu.length === 0) {
-      navigate(`/menu/${menu.id}`);
+      // ✅ 오시는길(7)과 SNS(8) 페이지는 별도 파일이므로 예외 처리
+      if (menu.id === 7 || menu.id === 8) {
+        navigate(`/sub/${menu.id}`);
+      } else {
+        navigate(`/sub/${menu.id}`);
+      }
+
+      console.log(`Navigating to /sub/${menu.id}`); // ✅ 디버깅 로그 추가
+
       if (window.innerWidth <= 767) {
         onClose(); // ✅ 모바일에서 클릭하면 모달 닫힘
       }
@@ -41,8 +38,9 @@ const Sidebar = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleSubMenuClick = (menuId, subItem) => {
-    navigate(`/sub/${menuId}/${subItem}`);
+  const handleSubMenuClick = (menuId, subIndex) => {
+    navigate(`/sub/${menuId}/${subIndex}`);
+    console.log(`Navigating to /sub/${menuId}/${subIndex}`); // ✅ 디버깅 로그 추가
 
     if (window.innerWidth <= 767) {
       onClose(); // ✅ 모바일에서 클릭하면 모달 닫힘
@@ -81,10 +79,10 @@ const Sidebar = ({ isOpen, onClose }) => {
                     className="side_subbar"
                     onClick={(e) => {
                       e.stopPropagation(); // ✅ 부모 메뉴 클릭 방지
-                      handleSubMenuClick(menu.id, subItem);
+                      handleSubMenuClick(menu.id, index);
                     }}
                   >
-                    {subItem}
+                    {subItem.title}
                   </li>
                 ))}
               </ul>

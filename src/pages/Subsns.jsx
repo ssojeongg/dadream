@@ -81,9 +81,9 @@ const Subsns = () => {
           </div>
         </div>
       ))}
-          <div className="more">
-            <p><span>블로그</span>에서 더 보기</p>
-          </div>
+        <div className="more">
+          <p><span>블로그</span>에서 더 보기</p>
+        </div>
       </div>
     </div>
   );
