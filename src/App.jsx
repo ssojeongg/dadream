@@ -12,7 +12,7 @@ import Subsns from "./pages/Subsns";   // SNS 페이지
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.PUBLIC_URL}>
       <Header />
       <Sidebar />
       <Routes>
