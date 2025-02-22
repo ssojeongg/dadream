@@ -94,39 +94,16 @@ function AnimatedRoutes() {
           <Route path="/sub/7" element={<Submap />} />
           <Route path="/sub/8" element={<Subsns />} />
 
-          {/* ✅ 1Depth 메뉴 (스와이프 시 애니메이션 적용) */}
-          {menuList.map((path) => (
-            <Route key={path} path={path} element={
-              isSwipe && isMobile ? ( // ✅ 모바일에서 스와이프 시 애니메이션 적용
-                <AnimatedPage direction={direction}>
-                  {path === "/" && <Main />}
-                  {path === "/sub/2" && <Subpage id="2" />}
-                  {path === "/sub/3/0" && <Subpage id="3" subIndex={0} />}
-                  {path === "/sub/4/0" && <Subpage id="4" subIndex={0} />}
-                  {path === "/sub/5/0" && <Subpage id="5" subIndex={0} />}
-                  {path === "/sub/6" && <Subpage id="6" />}
-                  {path === "/sub/7" && <Submap />}
-                  {path === "/sub/8" && <Subsns />}
-                  {path === "/sub/9" && <Subpage id="9" />}
-                </AnimatedPage>
-              ) : ( // ✅ 클릭 시 기본 이동 (애니메이션 X)
-                <>
-                  {path === "/" && <Main />}
-                  {path === "/sub/2" && <Subpage id="2" />}
-                  {path === "/sub/3/0" && <Subpage id="3" subIndex={0} />}
-                  {path === "/sub/4/0" && <Subpage id="4" subIndex={0} />}
-                  {path === "/sub/5/0" && <Subpage id="5" subIndex={0} />}
-                  {path === "/sub/6" && <Subpage id="6" />}
-                  {path === "/sub/7" && <Submap />}
-                  {path === "/sub/8" && <Subsns />}
-                  {path === "/sub/9" && <Subpage id="9" />}
-                </>
-              )
-            } />
-          ))}
-
-          {/* ✅ 2Depth 서브 페이지 */}
-          <Route path="/sub/:id/:subIndex?" element={<Subpage />} />
+          {/* ✅ 1Depth 메뉴 (Subpage 처리) */}
+          <Route path="/sub/:id/:subIndex?" element={
+            isSwipe && isMobile ? (
+              <AnimatedPage direction={direction}>
+                <Subpage />
+              </AnimatedPage>
+            ) : (
+              <Subpage />
+            )
+          } />
 
           {/* 존재하지 않는 경로 → 메인으로 리디렉트 */}
           <Route path="*" element={<Navigate to="/" />} />
