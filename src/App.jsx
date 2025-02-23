@@ -21,8 +21,14 @@ const slideVariants = {
   hiddenRight: { x: "100vw", opacity: 0 }
 };
 
-// ✅ 모바일에서 슬라이드 이동이 적용될 페이지 리스트
-const menuList = ["/", "/sub/2", "/sub/3/0", "/sub/4/0", "/sub/5/0", "/sub/6", "/sub/7", "/sub/8", "/sub/9"];
+// ✅ 1Depth + 2Depth 모든 경로 추가
+const menuList = [
+  "/", "/sub/2", 
+  "/sub/3/0", "/sub/3/1", "/sub/3/2", "/sub/3/3", "/sub/3/4", "/sub/3/5", "/sub/3/6", "/sub/3/7", "/sub/3/8", "/sub/3/9", 
+  "/sub/4/0", "/sub/4/1", "/sub/4/2", 
+  "/sub/5/0", "/sub/5/1",  
+  "/sub/6", "/sub/7", "/sub/8", "/sub/9"
+];
 
 function AnimatedPage({ children, direction }) {
   return (
@@ -53,9 +59,17 @@ function AnimatedRoutes() {
     setIsSwipe(false); // ✅ 클릭 이동 시 애니메이션 방지
   }, [location.pathname]);
 
-  // ✅ 스와이프 시 이동할 1Depth 메뉴 찾기
+  // ✅ 현재 페이지의 index 찾기 (동적 경로 대응)
+  const getCurrentIndex = () => {
+    const formattedPath = location.pathname.replace(/\/$/, ""); // 끝에 `/`가 붙어도 같은 경로로 인식
+    return menuList.findIndex(path => {
+      const regex = new RegExp(`^${path.replace(/:\w+/g, "\\d+")}$`); // 동적 경로 처리
+      return regex.test(formattedPath);
+    });
+  };
+
   const handleSwipeLeft = () => {
-    const currentIndex = menuList.indexOf(location.pathname);
+    const currentIndex = getCurrentIndex();
     if (currentIndex !== -1 && currentIndex < menuList.length - 1) {
       setDirection("left");
       setIsSwipe(true);
@@ -64,7 +78,7 @@ function AnimatedRoutes() {
   };
 
   const handleSwipeRight = () => {
-    const currentIndex = menuList.indexOf(location.pathname);
+    const currentIndex = getCurrentIndex();
     if (currentIndex > 0) {
       setDirection("right");
       setIsSwipe(true);
@@ -94,7 +108,7 @@ function AnimatedRoutes() {
           <Route path="/sub/7" element={<Submap />} />
           <Route path="/sub/8" element={<Subsns />} />
 
-          {/* ✅ 1Depth 메뉴 (Subpage 처리) */}
+          {/* ✅ 1Depth + 2Depth 메뉴 (스와이프 시 애니메이션 적용) */}
           <Route path="/sub/:id/:subIndex?" element={
             isSwipe && isMobile ? (
               <AnimatedPage direction={direction}>
