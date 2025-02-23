@@ -11,8 +11,8 @@ import Main from './layout/Main';
 import Subpage from "./pages/Subpage";
 import Sidebar from "./components/Sidebar";
 import FloatingBtn from "./components/FloatingBtn";
-import Submap from "./pages/Submap";   // 오시는길 페이지
-import Subsns from "./pages/Subsns";   // SNS 페이지
+import Submap from "./pages/Submap";   
+import Subsns from "./pages/Subsns";  
 
 // ✅ 슬라이드 애니메이션 설정
 const slideVariants = {
@@ -21,7 +21,7 @@ const slideVariants = {
   hiddenRight: { x: "100vw", opacity: 0 }
 };
 
-// ✅ 1Depth + 2Depth 모든 경로 추가
+// ✅ 모든 경로 추가
 const menuList = [
   "/", "/sub/2", 
   "/sub/3/0", "/sub/3/1", "/sub/3/2", "/sub/3/3", "/sub/3/4", "/sub/3/5", "/sub/3/6", "/sub/3/7", "/sub/3/8", "/sub/3/9", 
@@ -50,22 +50,31 @@ function AnimatedRoutes() {
   const navigate = useNavigate();
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
   const [direction, setDirection] = useState("left");
-  const [isSwipe, setIsSwipe] = useState(false); // ✅ 스와이프 여부 상태 추가
+  const [isSwipe, setIsSwipe] = useState(false); 
 
   useEffect(() => {
     if (!isSwipe) {
       setDirection("left");
     }
-    setIsSwipe(false); // ✅ 클릭 이동 시 애니메이션 방지
+    setIsSwipe(false); 
   }, [location.pathname]);
 
-  // ✅ 현재 페이지의 index 찾기 (동적 경로 대응)
+  // ✅ 현재 페이지 기억 (세션 스토리지 저장)
+  useEffect(() => {
+    sessionStorage.setItem("lastVisitedPage", location.pathname);
+  }, [location.pathname]);
+
+  // ✅ 마지막 방문 페이지로 이동
+  useEffect(() => {
+    const lastPage = sessionStorage.getItem("lastVisitedPage");
+    if (lastPage && lastPage !== location.pathname) {
+      navigate(lastPage, { replace: true });
+    }
+  }, []);
+
+  // ✅ 현재 페이지의 index 찾기
   const getCurrentIndex = () => {
-    const formattedPath = location.pathname.replace(/\/$/, ""); // 끝에 `/`가 붙어도 같은 경로로 인식
-    return menuList.findIndex(path => {
-      const regex = new RegExp(`^${path.replace(/:\w+/g, "\\d+")}$`); // 동적 경로 처리
-      return regex.test(formattedPath);
-    });
+    return menuList.findIndex(path => path === location.pathname);
   };
 
   const handleSwipeLeft = () => {
@@ -86,7 +95,6 @@ function AnimatedRoutes() {
     }
   };
 
-  // ✅ 모바일에서만 스와이프 감지
   const handlers = useSwipeable({
     onSwipedLeft: handleSwipeLeft,
     onSwipedRight: handleSwipeRight,
