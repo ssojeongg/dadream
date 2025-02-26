@@ -25,13 +25,13 @@
   width: 40px;
   cursor: pointer;
   position: relative;
-  padding-right: 5px;
+  padding-right: 10px;
 }
 .Summary > .inner > .summary_area .more_btn::after {
   content: ">";
   position: absolute;
   top: 0;
-  right: -5px;
+  right: 0px;
   width: 10px;
   height: 10px;
   display: inline-block;
